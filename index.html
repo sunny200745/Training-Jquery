@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=1024, user-scalable=no">
+
+  <title>Training-Jquery</title>
+
+  <!-- Required stylesheet -->
+  <link rel="stylesheet" href="deck.js/core/deck.core.css">
+
+  <!-- Extension CSS files go here. Remove or add as needed. -->
+  <link rel="stylesheet" href="deck.js/extensions/goto/deck.goto.css">
+  <link rel="stylesheet" href="deck.js/extensions/menu/deck.menu.css">
+  <link rel="stylesheet" href="deck.js/extensions/navigation/deck.navigation.css">
+  <link rel="stylesheet" href="deck.js/extensions/status/deck.status.css">
+  <link rel="stylesheet" href="deck.js/extensions/hash/deck.hash.css">
+  <link rel="stylesheet" href="deck.js/extensions/scale/deck.scale.css">
+
+  <!-- Codemirror theme -->
+  <link rel="stylesheet" href="deck.js/extensions/codemirror/deck.codemirror.css">
+  <link rel="stylesheet" href="deck.js/extensions/codemirror/themes/lesser-dark.css">
+
+  <!-- Style theme. More available in /themes/style/ or create your own. -->
+  <link rel="stylesheet" href="deck.js/themes/style/dark.css">
+
+  <!-- Transition theme. More available in /themes/transition/ or create your own. -->
+  <link rel="stylesheet" href="deck.js/themes/transition/cube.css">
+
+  <!-- Google Font -->
+  <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200,700' rel='stylesheet' type='text/css'>
+
+  <!-- Required Modernizr file -->
+
+  <script src="deck.js/modernizr.custom.js"></script>
+  <style>
+    .smallHeading{
+      color : #ff8c00;
+      font-weight: bold !important;      
+    }
+    .desc{
+      color : #ff7f50 !important;
+    }
+    .redHighlight{
+      color:red;
+    }
+    .greenHighlight{
+      color:green !important;
+    }
+    .heading{
+      color:#9932CC !important;
+    }
+  </style>
+</head>
+<body class="deck-container">
+
+<!-- Begin slides. Just make elements with a class of slide. -->
+
+<!-- JQUERY -->
+
+
+ <section class="slide">
+  <h1>JQUERY CONCEPTS</h1>
+</section>
+
+<section class="slide">
+  <h2>Unobtrusive Javascript</h2>
+  <div>
+    <span class="smallHeading">"Unobtrusive JavaScript"</span> is a general approach to the use of JavaScript in web pages. Best way to see the javascript in an unobtrusive way is by these ways :
+  </div>
+  <ul>
+    <li> Separation of functionality (the "behavior layer") from a Web page's structure/content and presentation.Best practices to avoid the problems of traditional JavaScript programming (such as browser inconsistencies and lack of scalability)..
+    <li> Progressive enhancement to support user agents that may not support advanced JavaScript functionality.
+    <div><br/>
+        <textarea id="code" name="code" class="code" mode="javascript" style="display: none;">
+  <input type="button" id="btn" onclick="alert('Test')" />
+        </textarea>
+      </div><br/>
+      <span class="desc">DESCRIPTION</span> : That is not unobstrusive javascript because behaviour and presentation are mixed. The onclick shouldn't be there in html and should be part of javascript itself not html.
+    
+  </ul>
+</section>
+
+<section class="slide">
+  <h2>..contd</h2>  
+  <ul>
+    <li> To make the above example unobtrusive way.
+    <div><br/>
+      
+        <textarea id="code" name="code" class="code" mode="javascript" style="display: none;" >
+  
+  <input type="button" id="btn" />
+  //In JS file
+  var el = document.getElementById('btn');
+  el.onclick = function(){
+    alert('Test');
+  };
+        </textarea>
+      </div><br/>
+    
+  </ul>
+</section>
+
+<section class="slide">
+  <h2>jQuery fundamentals</h2>  
+
+  <ul>
+    <li> jQuery($) is a fast, small, and feature-rich JavaScript library. 
+    <li> It makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers.
+    <li> Concisely jQuery is designed to change the way we write Javscript.   
+    
+  </ul>
+</section>
+
+
+<section class="slide">
+  <h2>In simple words</h2>  
+  <ul>
+    <li> Open-Source and lightweight JavaScript library.
+    <li> It has Cross-browser support
+    <li> Easy DOM interaction
+    <li> Ajax Maniuplation
+    <li> It provide useful alternatives for common programming tasks (CSS, HTML)
+    <li> Its rich in plugins eco-system  
+  </ul>
+</section>
+
+<section class="slide">
+  <h2>The jQuery wrapper</h2>  
+  <ul>
+    <li> jQuery isn't something that is "copied" - it is behavior that is wrapped around elements in the DOM.
+    <div><br/>
+      
+        <textarea id="code" name="code" class="code" mode="javascript" style="display: none;"  globals="$" >
+  
+  var jqDivs = $("div");
+  
+        </textarea>
+      </div><br/>
+    <span class="desc">DESCRIPTION</span> : It returns an instance of a jQuery object, wrapping the elements you selected with your CSS selector (in this case, a jQuery object wrapping all the divs in the document).Also to view the content of the wrapped object console the above to see it yourself.
+    
+  </ul>
+</section>
+
+<section class="slide">
+  <h2>The jQuery ready event</h2>  
+  <ul>
+    <li>  Javascript don't run unless it finishes loading all banner/images etc i.e why window.onload() is important in js, to overcome the situation of waiting and loading in jQuery we have ready event which gets triggred as soon as DOM loading completes.
+    <div><br/>
+      
+        <textarea id="code" name="code" class="code" mode="javascript" style="display: none;"  globals="$" runnable="true">
+  
+  $(document).ready(function(){
+    alert("I am ready");
+      // do stuff 
+  });
+  
+        </textarea>
+      </div><br/>    
+  </ul>
+</section>
+
+<section class="slide">
+  <h2>Difference between JQUERY ready v/s WINDOW onload </h2> 
+  <span class="smallHeading">JQUERY ready</span> 
+  <ul>
+    <li>  $( document ).ready() will only run once the page Document Object Model (DOM) is ready for JavaScript code to execute
+    <li>  Specific to jQuery    
+  </ul>
+  <span class="smallHeading">WINDOW  onload</span> 
+  <ul>
+    <li>  $( window ).load(function() { ... }) will run once the entire page (images or iframes), along with DOM  finishes loading
+    <li>  In built JS function   
+  </ul>
+  <span class="desc">
+    Also $ sign is simply an alias for jQuery it is also called as selector
+  </span>
+</section>
+
+<section class="slide">
+  <h2>jQuery Selectors</h2>  
+  <div>
+  jQuery selectors allow you to select and manipulate HTML element(s).
+  There are variety of seletors available in jQuery Most Important ones are : 
+  </div>
+  <ul>
+    <li>  <span class="smallHeading">The element Selector </span> : The jQuery element selector selects elements based on the element name.
+    <div><br/>
+      <p> Element Selector, I am abt to be hide when you hit RUN</p>
+        <textarea id="code" name="code" class="code" mode="javascript" style="display: none;"  globals="$" runnable="true">
+  
+  $("p").hide() // This will hide all the <p> elements
+  
+        </textarea>
+      </div><br/>    
+  </ul>
+</section>
+
+<section class="slide">
+  <h2>..contd</h2>   
+  <ul>
+    <li>  <span class="smallHeading">The #id Selector </span> : The jQuery #id selector uses the id attribute of an HTML tag to find the specific  element.
+    <div><br/>
+      <div id="p"> ID Selector, I am abt to be hide when you hit RUN</div>
+        <textarea id="code" name="code" class="code" mode="javascript" style="display: none;"  globals="$" runnable="true">
+  
+  $("#p").hide() // This will hide the element with id "p".
+  
+        </textarea>
+      </div><br/>    
+  </ul>
+</section>
+
+<section class="slide">
+  <h2>..contd</h2>   
+  <ul>
+    <li>  <span class="smallHeading">The .class Selector </span> : The jQuery class selector finds elements with a specific class.
+    <div><br/>
+      <div class="p"> CLASS Selector, I am abt to be hide when you hit RUN</div>
+        <textarea id="code" name="code" class="code" mode="javascript" style="display: none;"  globals="$" runnable="true">
+  
+  $(".p").hide() // This will hide the element with class "p".
+  
+        </textarea>
+      </div><br/>    
+  </ul>
+  <div>
+    There are variety more selectors for them visit :<br/> 
+    <a href="http://api.jquery.com/category/selectors" target="_blank">http://api.jquery.com/category/selectors</a>
+</div>
+</section>
+
+<section class="slide">
+  <h2>Custom Selectors</h2>   
+  <ul>
+    <li>  Depending on the requirement we can create our own selectors as in this example i have created a custom selector named &nbsp;<span class="smallHeading">inview</span>
+    <div><br/>
+      <article inview> To see Custom selector in action Hit RUN</article>
+        <textarea id="code" name="code" class="code" mode="javascript" style="display: none;"  globals="$,jQuery" runnable="true">
+  
+  jQuery.extend(jQuery.expr[':'], {  
+    inview: function (el) {    
+      if (true) { // pass condition instead of true
+            return true;    
+      }    
+      return false;  
+    }
+  })
+  
+  $("article:inview").css("color","orange");
+        </textarea>
+      </div><br/>    
+  </ul>
+  <div>
+    <span class="desc">DESCRIPTION</span> : The expression is what will be called in our selector,it could be anything.The function is what you’d expect. We’ve added the return false, as that’s what you want the function to do at the minimum. Other than that, use any methods you need to return the Booleans that will power your selector.
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Manipulating page contents with jQuery</h2>   
+  <ul>
+    <li>  Maniuplation is possible only if you know how , what to maniuplate
+    <li><span class="smallHeading">Events</span> : (Require to maniuplate the content) - A person actions that a web page can respond to are called events. An event represents the precise moment when something happens.
+    eg: moving a mouse over an element,selecting a radio button,clicking on an element.    
+  </ul>
+  <div>Important events can be broadly classified as : </div>
+  <ul>    
+    <li><span class="smallHeading">Mouse Events</span>    
+    <li><span class="smallHeading">Keyboard Events</span>    
+    <li><span class="smallHeading">Form Events</span>    
+  </ul>
+  
+</section>
+
+<section class="slide">
+  <h2>Mouse Events</h2>   
+  <ul>
+    <li><span class="smallHeading">CLICK</span> : 
+    <div><br/>
+      <input type="button" id="p1" value="Button"/>
+        <textarea id="code" name="code" class="code" mode="javascript" style="display: none;"  globals="$,jQuery" runnable="true">
+  
+  $("#p1").click(function(){
+    console.log("You Clicked");
+  });
+        </textarea>
+      </div><br/>
+    <li><span class="smallHeading">DOUBLE CLICK</span> : 
+    <div><br/>
+      <input type="button" id="p2" value="Button"/>
+        <textarea id="code" name="code" class="code" mode="javascript" style="display: none;"  globals="$,jQuery" runnable="true">
+  
+  $("#p2").dblclick(function(){
+    console.log("You Double Clicked");
+  });
+        </textarea>
+      </div><br/> 
+    <li><span class="smallHeading">MOUSE ENTER / MOUSE LEAVE</span> : 
+    <div><br/>
+      <input type="button" id="p3" value="Button"/>
+        <textarea id="code" name="code" class="code" mode="javascript" style="display: none;"  globals="$,jQuery" runnable="true">
+  
+  $("#p3").mouseenter(function(){
+    // same will trigger when mouse leaves the element just the event would be mouseleave
+    console.log("You entered in button element");
+  });
+        </textarea>
+      </div><br/>        
+  </ul>
+
+  
+</section>
+
+
+
+<section class="slide">
+  <h2>Keyboard Events</h2>   
+  <ul>
+    <li><span class="smallHeading">KEYPRESS</span> : 
+    <div><br/>
+      <input type="text" id="p4" placeholder="Enter some value"/>
+        <textarea id="code" name="code" class="code" mode="javascript" style="display: none;"  globals="$,jQuery" runnable="true">
+  
+  $("#p4").keypress(function(){
+    console.log("You triggered keypress event");
+  });
+        </textarea>
+      </div><br/>
+    <li><span class="smallHeading">KEYDOWN</span> : 
+    <div><br/>
+      <input type="text" id="p5" placeholder="Enter some value"/>
+        <textarea id="code" name="code" class="code" mode="javascript" style="display: none;"  globals="$,jQuery" runnable="true">
+  
+  $("#p5").keydown(function(){
+    console.log("You triggered keydown event");
+  });
+        </textarea>
+      </div><br/> 
+          
+  </ul>
+</section>
+
+<section class="slide">
+  <h2>Form Events</h2>   
+  <ul>
+    <li><span class="smallHeading">FOCUS</span> : 
+    <div><br/>
+      <input type="text" id="p6" placeholder="Enter some value"/>
+        <textarea id="code" name="code" class="code" mode="javascript" style="display: none;"  globals="$,jQuery" runnable="true">
+  
+  $("#p6").focus(function(){
+    $(this).css("background-color","cyan");
+  });
+        </textarea>
+      </div><br/>
+    <li><span class="smallHeading">BLUR</span> : 
+    <div><br/>
+      <input type="text" id="p7" placeholder="Enter some value"/>
+        <textarea id="code" name="code" class="code" mode="javascript" style="display: none;"  globals="$,jQuery" runnable="true">
+  
+  $("#p7").blur(function(){
+    $(this).css("background-color","cyan");
+  });
+        </textarea>
+      </div><br/> 
+          
+  </ul>
+  <div>
+    For more jQuery event reference, please visit <a href="http://www.w3schools.com/jquery/jquery_ref_events.asp" target="_blank">http://www.w3schools.com/jquery/jquery_ref_events.asp</a>
+  </div>
+</section>
+
+
+<section class="slide">
+  <h2>jQuery Effects </h2>   
+  <div>
+    The jQuery provides several techniques for adding animation to a web page. These include simple, standard animations that are frequently used, and the ability to craft sophisticated custom effects.
+    eg : Hide, Show, Toggle, Slide, Fade, and Animate.
+  </div>  <br/>
+  <ul>  
+    <li> <span class="smallHeading">HIDE</span> : syntax : $(selector).hide(speed,callback);
+    <li> <span class="smallHeading">SHOW</span> : syntax : $(selector).show(speed,callback);
+    <li> <span class="smallHeading">TOGGLE</span> : you can toggle between the hide() and show() methods with the toggle() method.
+        syntax : $(selector).toggle(speed,callback);          
+  </ul>
+  <div>
+    <span class="desc">DESCRIPTION</span> : The optional speed parameter specifies the speed of the hiding/showing, and can take the following values: "slow", "fast", or milliseconds.
+  </div>
+</section>
+
+<section class="slide">
+  <h2>..contd </h2>     
+  <ul>  
+    <li> <span class="smallHeading">FADE</span> : With jQuery you can fade elements in and out of visibility.Related events fadeIn, fadeOut etc...
+    <li> <span class="smallHeading">SLIDE</span> : The jQuery slide methods slides elements up and down
+      Related events slidedown, slideup etc...
+    <li> <span class="smallHeading">ANIMATE</span> : You can toggle between the hide() and show() methods with the toggle() method. Syntax : $(selector).toggle(speed,callback);<br/><br/>
+    <span class="desc">DESCRIPTION</span> : The required params parameter defines the CSS properties to be animated.The optional speed parameter specifies the duration of the effect. It can take the following values: "slow", "fast", or milliseconds.<br/><br/>
+    To stop an ogoing animation we use stop() , syntax : <span class="desc">$(selector).stop(stopAll,goToEnd);</span>    
+  </ul>
+  
+</section>
+
+<section class="slide">
+  <h2>Some more concepts </h2>     
+  <ul>  
+    <li> <span class="smallHeading">Callback</span> : A callback is a function which is passed as an argument to other function and is excuted when the parent function is completed.<br/>
+    eg : <span class="desc"> $("#id").hide(function(){ alert("this id is now hidden")}); </span>
+
+    <li> <span class="smallHeading">Chaining</span> : Chaining allows us to run multiple jQuery methods (on the same element) within a single statement;<br/>
+    eg : <span class="desc"> $("#p1").css("color","red").slideUp(2000).slideDown(2000);</span><br/><br/> DESCRIPTION : The "p1" element first changes to red, then it slides up, and then it slides down.
+  </ul>
+  
+</section>
+
+
+
+<section class="slide">
+  <h2>..contd</h2>     
+  <ul>  
+    
+    <li> <span class="smallHeading"> DOM Maniuplation</span> : It contains powerful methods for changing and manipulating HTML elements and attributes.<br/>
+    Methods for maniuplation are : 
+    <ul>
+      <li><span class="smallHeading"> TEXT</span> : Sets or returns the text content of selected elements eg : $("ele").text();
+      <li><span class="smallHeading"> HTML</span> : Sets or returns the content of selected elements (including HTML markup)eg : $("ele").html();
+      <li><span id="a2" class="smallHeading"> VAL</span> : Sets or returns the value of form fields eg : $("ele").val();
+    </ul><br/>
+    If empty barckets it acts like getter else if contains some params then as setter
+
+    <div><br/>
+      <input type="button" id="a1" value="button"/>
+        <textarea id="code" name="code" class="code" mode="javascript" style="display: none;"  globals="$,jQuery" runnable="true">
+  // here as getter add value in .html() for setter
+  $("#a1").click(function(){
+    console.log("Text: " + $("#a2").html()); 
+  });
+        </textarea>
+      </div><br/> 
+ </ul>
+  
+</section>
+
+<section class="slide">
+  <h2>..contd</h2>     
+  <div>
+    General getter is .attr() ##Same rule follows single param as getter and with param,value is setter 
+  </div>
+  <div id="a4" class="test"><br/>
+      <input type="button" id="a3" value="button"/>
+        <textarea id="code" name="code" class="code" mode="javascript" style="display: none;"  globals="$,jQuery" runnable="true">
+  // here as getter add value in .attr(prop,val) for setter
+  $("#a3").click(function(){
+    console.log("Class is: " + $("#a4").attr('class')); 
+  });
+        </textarea>
+      </div><br/> 
+
+  <div id="a6" class="test"><br/>
+      <input type="button" id="a5" value="button"/>
+        <textarea id="code" name="code" class="code" mode="javascript" style="display: none;"  globals="$,jQuery" runnable="true">
+  // here .attr(prop,val) for setter
+  $("#a5").click(function(){
+    $("#a6").attr('class','newTestClass'); // setting the class value
+    console.log("Class is: " + $("#a6").attr('class')); 
+  });
+        </textarea>
+      </div><br/> 
+  
+</section>
+
+<section class="slide">
+  <h2>..contd</h2>     
+  <div>
+    <span class="desc">HTML Adding elements</span> : These helps adding elems in HTML
+  </div>
+  <ul>
+    <li><span class="smallHeading">append</span> : Inserts content at the end of the selected elements.<br/>
+      eg : <span class="desc">$("p").append("Some appended text.");</span>
+    <li><span class="smallHeading">prepend</span> : Inserts content at the beginning of the selected elements.<br/>
+      eg : <span class="desc">$("p").prepend("Some prepend text.");</span>
+    <li><span class="smallHeading">after</span> : Inserts content after the selected elements.<br/>
+      eg : <span class="desc">$("p").after("Some text after.");</span>
+    <li><span class="smallHeading">before</span> : Inserts content before the selected elements.<br/>
+      eg : <span class="desc">$("p").before("Some text before.");</span>
+  </ul>
+  
+</section>
+
+<section class="slide">
+  <h2>..contd</h2>     
+  <div>
+    <span class="desc">HTML Remove Elements</span> : These helps removing elems from HTML
+  </div>
+  <ul>
+    <li><span class="smallHeading">remove</span> : Removes the selected element (and its child elements)<br/>
+      eg : <span class="desc">$("#div1").remove()</span>
+    <li><span class="smallHeading">empty</span> : Removes the child elements from the selected element <br/>
+      eg : <span class="desc">$("#div1").empty();</span>
+   
+  </ul>
+  
+</section>
+
+<section class="slide">
+  <h2>..contd</h2>     
+  <div>
+    <span class="desc">CSS Classes</span> : jQuery has several methods for CSS manipulation. We will look at the following methods:
+  </div>
+  <ul>
+    <li><span class="smallHeading">addClass</span> : Removes the selected element (and its child elements)
+
+    <li><span class="smallHeading">removeClass</span> : Removes one or more classes from the selected elements
+
+    <li><span class="smallHeading">toggleClass</span> : Toggles between adding/removing classes from the selected elements 
+
+    <li><span class="smallHeading">css</span> :Sets or returns the style attribute 
+  </ul>
+  <div><br/>
+      <input type="button" id="b1" value="button" class="red" />
+        <textarea id="code" name="code" class="code" mode="javascript" style="display: none;"  globals="$,jQuery" runnable="true">
+  //All in one css example
+  $("#b1").click(function(){
+     $(this).addClass("blue"); //adding the class
+     // $(this).removeClass("red");//removing the class
+     
+     // $(this).toggleClass("red");//this will toggle the class
+     // $(this).css("background-color","red");//setter
+     // console.log('Background color is : ',$(this).css("background-color"));//getter
+     
+  });
+        </textarea>
+      </div><br/> 
+  
+</section>
+
+
+
+
+
+<!-- END SLIDE -->
+
+<section class="slide">
+
+    
+
+    <div style="float:left">
+      <img src="images/thanku.png">
+    </div>
+
+
+
+    <div style="float: right;margin-top: -17px;margin-right: -125px;">
+      <img src="images/contactus.jpg">
+    </div>
+
+</section>
+
+<!-- End slides. -->
+
+
+<!-- Begin extension snippets. Add or remove as needed. -->
+
+<!-- deck.navigation snippet -->
+<a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+<a href="#" class="deck-next-link" title="Next">&#8594;</a>
+
+<!-- deck.status snippet -->
+<p class="deck-status">
+  <span class="deck-status-current"></span>
+  /
+  <span class="deck-status-total"></span>
+</p>
+
+<!-- deck.goto snippet -->
+<form action="." method="get" class="goto-form">
+  <label for="goto-slide">Go to slide:</label>
+  <input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+  <datalist id="goto-datalist"></datalist>
+  <input type="submit" value="Go">
+</form>
+
+<!-- deck.hash snippet -->
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+<!-- End extension snippets. -->
+
+
+<!-- Required JS files. -->
+<script src="deck.js/jquery-1.7.2.min.js"></script>
+<script src="deck.js/angular.js"></script>
+<script src="deck.js/core/deck.core.js"></script>
+
+<!-- Extension JS files. Add or remove as needed. -->
+<script src="deck.js/core/deck.core.js"></script>
+<script src="deck.js/extensions/hash/deck.hash.js"></script>
+<script src="deck.js/extensions/menu/deck.menu.js"></script>
+<script src="deck.js/extensions/goto/deck.goto.js"></script>
+<script src="deck.js/extensions/status/deck.status.js"></script>
+<script src="deck.js/extensions/navigation/deck.navigation.js"></script>
+<script src="deck.js/extensions/scale/deck.scale.js"></script>
+
+<!-- Base codemiror code -->
+<script src="deck.js/extensions/codemirror/codemirror.js"></script>
+<!-- javascript mode -->
+<script src="deck.js/extensions/codemirror/mode/javascript/javascript.js"></script>
+<!-- html mode (note html mode requires xml, css and javascript) -->
+<script src="deck.js/extensions/codemirror/mode/xml/xml.js"></script>
+<script src="deck.js/extensions/codemirror/mode/css/css.js"></script>
+<script src="deck.js/extensions/codemirror/mode/htmlmixed/htmlmixed.js"></script>
+<!-- Plugin code -->
+<script src="deck.js/extensions/codemirror/deck.codemirror.js"></script>
+
+<!-- Initialize the deck. You can put this in an external file if desired. -->
+<script>
+  $(function() {
+    $.deck('.slide');
+  });
+</script>
+</body>
+</html>
+
